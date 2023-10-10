@@ -29,14 +29,11 @@ export function checkIngredients(menu, ingredient) {
 	if (!ingredient) throw new Error('ingredient is required');
 	let present = false;
 	//comment for self learning
-	//as I wanted to break out of the loop when the ingredient is present, 
-	//I used 'every' to loop so that I can return false to break out of the loop
-	//with foreach, there was no way to break out of the loop
-	menu.every(item => {
+	//as I wanted to break out of the loop when the ingredient is present, i cant use forEach
+	//I used 'some' to loop so that I can break out of the loop when condition is true.
+	menu.some(item => {
 		present = item.ingredients.includes(ingredient)
-		if (present)
-			return false;
-		return true;
+		return (present)
 	}
 	);
 	return present;
@@ -45,5 +42,12 @@ export function checkIngredients(menu, ingredient) {
 export function duplicateNumbers(arr1, arr2) {
 	if (arr1 === undefined) throw new Error('arr1 is required');
 	if (arr2 === undefined) throw new Error('arr2 is required');
-	// Your code here!
+	let array3 = [];
+	arr1.forEach(item => {
+		if ((arr2.includes(item)) && (!array3.includes(item))) {
+			array3.push(item);
+		}
+	});
+	array3.sort();
+	return array3;
 }
