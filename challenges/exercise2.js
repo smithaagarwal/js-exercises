@@ -27,7 +27,19 @@ export function getTotalSubjects(people) {
 export function checkIngredients(menu, ingredient) {
 	if (menu === undefined) throw new Error('menu is required');
 	if (!ingredient) throw new Error('ingredient is required');
-	// Your code here!
+	let present = false;
+	//comment for self learning
+	//as I wanted to break out of the loop when the ingredient is present, 
+	//I used 'every' to loop so that I can return false to break out of the loop
+	//with foreach, there was no way to break out of the loop
+	menu.every(item => {
+		present = item.ingredients.includes(ingredient)
+		if (present)
+			return false;
+		return true;
+	}
+	);
+	return present;
 }
 
 export function duplicateNumbers(arr1, arr2) {
