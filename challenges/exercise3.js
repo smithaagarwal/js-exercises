@@ -31,26 +31,49 @@ export function findVerbs(words) {
 
 export function getIntegers(nums) {
 	if (!nums) throw new Error('nums is required');
-	// Your code here
+	const intArr = [];
+	for (let i = 0; i < nums.length; i++) {
+		if (Number.isInteger(nums[i]))
+			intArr.push(nums[i]);
+	}
+	return intArr;
 }
 
 export function getCities(users) {
 	if (!users) throw new Error('users is required');
-	// Your code here
+	const cities = [];
+	for (let i = 0; i < users.length; i++) {
+		cities.push(users[i].data.city.displayName);
+	}
+	return cities;
 }
 
 export function getSquareRoots(nums) {
 	if (!nums) throw new Error('nums is required');
-	// Your code here
+	const squareRootArr = [];
+	for (let i = 0; i < nums.length; i++)
+		squareRootArr.push(Number(Math.sqrt(nums[i]).toFixed(2)));
+	return squareRootArr;
 }
 
 export function findSentencesContaining(sentences, str) {
 	if (!sentences) throw new Error('sentences is required');
 	if (!str) throw new Error('str is required');
-	// Your code here
+	const sentencesHavingStrArr = [];
+	for (let i = 0; i < sentences.length; i++) {
+		if (sentences[i].toLowerCase().includes(str.toLowerCase()))
+			sentencesHavingStrArr.push(sentences[i]);
+	}
+	return sentencesHavingStrArr;
 }
 
 export function getLongestSides(triangles) {
 	if (!triangles) throw new Error('triangles is required');
-	// Your code here
+	const longestSidesArr = [];
+	for (let i = 0; i < triangles.length; i++) {
+		const tempTriangle = triangles[i];
+		tempTriangle.sort(function (a, b) { return b - a });
+		longestSidesArr.push(tempTriangle[0]);
+	}
+	return longestSidesArr;
 }
