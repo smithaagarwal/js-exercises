@@ -1,17 +1,32 @@
 export function findSmallNums(nums) {
 	if (!nums) throw new Error('nums is required');
-	// Your code here
+	const smallerNumArr = [];
+	for (let i = 0; i < nums.length; i++) {
+		if (nums[i] < 1)
+			smallerNumArr.push(nums[i]);
+	}
+	return smallerNumArr;
 }
 
 export function findNamesBeginningWith(names, char) {
 	if (!names) throw new Error('names is required');
 	if (!char) throw new Error('char is required');
-	// Your code here
+	const namesArr = [];
+	for (let i = 0; i < names.length; i++) {
+		if (names[i].startsWith(char))
+			namesArr.push(names[i]);
+	}
+	return namesArr;
 }
 
 export function findVerbs(words) {
 	if (!words) throw new Error('words is required');
-	// Your code here
+	const verbssArr = [];
+	for (let i = 0; i < words.length; i++) {
+		if (words[i].startsWith('to '))
+			verbssArr.push(words[i]);
+	}
+	return verbssArr;
 }
 
 export function getIntegers(nums) {
