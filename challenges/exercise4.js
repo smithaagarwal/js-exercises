@@ -12,7 +12,16 @@ export const findNextNumber = (nums, n) => {
 
 export const count1sand0s = (str) => {
 	if (str === undefined) throw new Error('str is required');
-	// Your code here!
+	const numOfOnesAndZeros = {
+		1: 0,
+		0: 0,
+	};
+	if (str.match(/1/g))
+		numOfOnesAndZeros["1"] = (str.match(/1/g).length);
+	if (str.match(/0/g))
+		numOfOnesAndZeros["0"] = (str.match(/0/g).length);
+
+	return numOfOnesAndZeros;
 };
 
 export const reverseNumber = (n) => {
