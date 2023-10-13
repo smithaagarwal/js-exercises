@@ -24,6 +24,12 @@ describe("sumMultiples", () => {
   test("return 0 if the array is empty", () => {
     expect(sumMultiples([])).toBe(0);
   });
+
+  test("it throws error if array is not passed", () => {
+    expect(() => {
+      sumMultiples();
+    }).toThrow("arr is required");
+  });
 });
 
 describe("isValidDNA", () => {
@@ -52,6 +58,12 @@ describe("isValidDNA", () => {
     expect(isValidDNA("")).toBe(false);
     expect(isValidDNA(" ")).toBe(false);
   });
+
+  test("it throws error if string is not passed", () => {
+    expect(() => {
+      isValidDNA();
+    }).toThrow("str is required");
+  });
 });
 
 describe("getComplementaryDNA", () => {
@@ -61,6 +73,12 @@ describe("getComplementaryDNA", () => {
     expect(getComplementaryDNA("GG")).toBe("CC");
     expect(getComplementaryDNA("TTTTTTTTT")).toBe("AAAAAAAAA");
     expect(getComplementaryDNA("AAAAAAAAA")).toBe("TTTTTTTTT");
+  });
+
+  test("it throws error if string is not passed", () => {
+    expect(() => {
+      getComplementaryDNA();
+    }).toThrow("str is required");
   });
 });
 
@@ -73,6 +91,11 @@ describe("isItPrime", () => {
     expect(isItPrime(61)).toBe(true);
     expect(isItPrime(111)).toBe(false);
     expect(isItPrime(0)).toBe(false);
+  });
+  test("it throws error if number is not passed", () => {
+    expect(() => {
+      isItPrime();
+    }).toThrow("n is required");
   });
 });
 
@@ -88,6 +111,16 @@ describe("createMatrix", () => {
       ["fin", "fin"],
     ]);
     expect(createMatrix(1, "h")).toEqual([["h"]]);
+  });
+  test("it throws error if number is not passed", () => {
+    expect(() => {
+      createMatrix();
+    }).toThrow("n is required");
+  });
+  test("it throws error if fill is not passed", () => {
+    expect(() => {
+      createMatrix(2);
+    }).toThrow("fill is required");
   });
 });
 
@@ -174,4 +207,20 @@ describe("areWeCovered", () => {
       )
     ).toBe(false);
   });
+
+  test("it throws an error if array not passed", () => {
+    expect(() => {
+      areWeCovered();
+    }).toThrow("staff is required");
+  });
+
+  expect(() => {
+    areWeCovered([
+      { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+      {
+        name: "Pedro",
+        rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+      },
+    ]);
+  }).toThrow("day is required");
 });
