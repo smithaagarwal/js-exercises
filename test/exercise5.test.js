@@ -75,3 +75,18 @@ describe("isItPrime", () => {
     expect(isItPrime(0)).toBe(false);
   });
 });
+
+describe("createMatrix", () => {
+  test("return an array of n arrays, each filled with n items.", () => {
+    expect(createMatrix(3, "foo")).toEqual([
+      ["foo", "foo", "foo"],
+      ["foo", "foo", "foo"],
+      ["foo", "foo", "foo"],
+    ]);
+    expect(createMatrix(2, "fin")).toEqual([
+      ["fin", "fin"],
+      ["fin", "fin"],
+    ]);
+    expect(createMatrix(1, "h")).toEqual([["h"]]);
+  });
+});
