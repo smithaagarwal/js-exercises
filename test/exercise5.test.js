@@ -92,6 +92,9 @@ describe("isItPrime", () => {
     expect(isItPrime(111)).toBe(false);
     expect(isItPrime(0)).toBe(false);
   });
+  test("returns false if a decimal number is passed", () => {
+    expect(isItPrime(1.1)).toBe(false);
+  });
   test("it throws error if number is not passed", () => {
     expect(() => {
       isItPrime();

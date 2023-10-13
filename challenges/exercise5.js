@@ -66,6 +66,7 @@ export const getComplementaryDNA = (str) => {
 export const isItPrime = (n) => {
   if (n === undefined) throw new Error("n is required");
   if (n === 0 || n === 1) return false;
+  if (n % 1 !== 0) return false;
   const largestPossibleFactor = Math.sqrt(n);
   for (let i = 2; i < largestPossibleFactor; i++) {
     if (n % i === 0) return false;
