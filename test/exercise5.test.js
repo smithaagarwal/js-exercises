@@ -63,3 +63,15 @@ describe("getComplementaryDNA", () => {
     expect(getComplementaryDNA("AAAAAAAAA")).toBe("TTTTTTTTT");
   });
 });
+
+describe("isItPrime", () => {
+  test("return true/false depending on whether it is a prime number or not", () => {
+    expect(isItPrime(1)).toBe(false);
+    expect(isItPrime(2)).toBe(true);
+    expect(isItPrime(5)).toBe(true);
+    expect(isItPrime(11)).toBe(true);
+    expect(isItPrime(61)).toBe(true);
+    expect(isItPrime(111)).toBe(false);
+    expect(isItPrime(0)).toBe(false);
+  });
+});
