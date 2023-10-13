@@ -90,3 +90,88 @@ describe("createMatrix", () => {
     expect(createMatrix(1, "h")).toEqual([["h"]]);
   });
 });
+
+describe("areWeCovered", () => {
+  test("return true when there are 3 or more staffs with the given day in rota ", () => {
+    expect(
+      areWeCovered(
+        [
+          { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+          {
+            name: "Pedro",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+          {
+            name: "John",
+            rota: ["Saturday", "Monday", "Tuesday", "Wednesday"],
+          },
+        ],
+        "Tuesday"
+      )
+    ).toBe(true);
+    expect(
+      areWeCovered(
+        [
+          { name: "Sally", rota: ["Monday", "Tuesday", "Saturday"] },
+          {
+            name: "Pedro",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+          {
+            name: "John",
+            rota: ["Saturday", "Monday", "Tuesday", "Wednesday"],
+          },
+          { name: "Tom", rota: ["Saturday", "Monday", "Tuesday", "Wednesday"] },
+        ],
+        "Saturday"
+      )
+    ).toBe(true);
+  });
+  test("return false when there are less than 3 staffs with the given day in rota ", () => {
+    expect(
+      areWeCovered(
+        [
+          { name: "Sally", rota: ["Monday", "Tuesday", "Saturday"] },
+          {
+            name: "Pedro",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+          { name: "John", rota: ["Saturday", "Tuesday", "Wednesday"] },
+          { name: "Tom", rota: ["Saturday", "Monday", "Tuesday", "Wednesday"] },
+        ],
+        "Monday"
+      )
+    ).toBe(false);
+  });
+  test("return false when one of the staff has the same day mentioned twice and that adds up to 3 days ", () => {
+    expect(
+      areWeCovered(
+        [
+          { name: "Sally", rota: ["Monday", "Saturday", "Saturday"] },
+          {
+            name: "Pedro",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+          { name: "John", rota: ["Tuesday", "Wednesday"] },
+          { name: "Tom", rota: ["Monday", "Tuesday", "Wednesday"] },
+        ],
+        "Saturday"
+      )
+    ).toBe(false);
+  });
+
+  test("return false when there are less than 3 staffs listed ", () => {
+    expect(
+      areWeCovered(
+        [
+          { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+          {
+            name: "Pedro",
+            rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"],
+          },
+        ],
+        "Monday"
+      )
+    ).toBe(false);
+  });
+});
