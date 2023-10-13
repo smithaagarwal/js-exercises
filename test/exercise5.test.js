@@ -53,3 +53,13 @@ describe("isValidDNA", () => {
     expect(isValidDNA(" ")).toBe(false);
   });
 });
+
+describe("getComplementaryDNA", () => {
+  test("return a string of the complementary base pairs. In DNA, T always pairs with A, and C always pairs with G and vice versa", () => {
+    expect(getComplementaryDNA("CGTA")).toBe("GCAT");
+    expect(getComplementaryDNA("CC")).toBe("GG");
+    expect(getComplementaryDNA("GG")).toBe("CC");
+    expect(getComplementaryDNA("TTTTTTTTT")).toBe("AAAAAAAAA");
+    expect(getComplementaryDNA("AAAAAAAAA")).toBe("TTTTTTTTT");
+  });
+});

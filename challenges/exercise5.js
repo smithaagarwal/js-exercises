@@ -39,6 +39,23 @@ export const isValidDNA = (str) => {
  */
 export const getComplementaryDNA = (str) => {
   if (str === undefined) throw new Error("str is required");
+  const complementaryDNAArr = Array.from(str).map((char) => {
+    switch (char) {
+      case "A":
+        return "T";
+        break;
+      case "T":
+        return "A";
+        break;
+      case "C":
+        return "G";
+        break;
+      case "G":
+        return "C";
+        break;
+    }
+  });
+  return complementaryDNAArr.join("");
 };
 
 /**
