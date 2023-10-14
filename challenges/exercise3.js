@@ -60,7 +60,7 @@ export function findSentencesContaining(sentences, str) {
 export function getLongestSides(triangles) {
 	if (!triangles) throw new Error('triangles is required');
 	const longestSidesArr = triangles.map(triangle => {
-		const tempTriangle = triangle;
+		const tempTriangle = [...triangle];
 		tempTriangle.sort(function (a, b) { return b - a });
 		return tempTriangle[0];
 	});
