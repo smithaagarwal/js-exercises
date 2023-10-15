@@ -175,3 +175,32 @@ describe("getScreentimeAlertList", () => {
     expect(getScreentimeAlertList(users, "2021-06-14")).toEqual([]);
   });
 });
+
+describe("hexToRGB", () => {
+  test("it throws an error when called without a parameter", () => {
+    expect(() => {
+      hexToRGB();
+    }).toThrow("hexStr is required");
+  });
+  test("it throws an error when called with a parameter not following the format # followed by 6 hexadecimal digits", () => {
+    expect(() => {
+      hexToRGB("FF1133");
+    }).toThrow(
+      "the code passed should be of the format # followed by 6 hexadeimal digits"
+    );
+    expect(() => {
+      hexToRGB("#FFZ133");
+    }).toThrow(
+      "the code passed should be of the format # followed by 6 hexadeimal digits"
+    );
+    expect(() => {
+      hexToRGB("#FF113");
+    }).toThrow(
+      "the code passed should be of the format # followed by 6 hexadeimal digits"
+    );
+  });
+  test("return RGB code for the hexadecimal color code passed", () => {
+    expect(hexToRGB("#FF1133")).toEqual("rgb(255,17,51)");
+    expect(hexToRGB("#EF1203")).toEqual("rgb(239,18,3)");
+  });
+});
