@@ -204,3 +204,59 @@ describe("hexToRGB", () => {
     expect(hexToRGB("#EF1203")).toEqual("rgb(239,18,3)");
   });
 });
+
+describe("findWinner", () => {
+  const board1 = [
+    ["X", "0", null],
+    ["X", null, "0"],
+    ["X", null, "0"],
+  ];
+  const board2 = [
+    ["X", "X", "X"],
+    ["0", null, "0"],
+    ["0", null, null],
+  ];
+  const board3 = [
+    ["X", "0", null],
+    ["0", "X", "0"],
+    [null, null, "X"],
+  ];
+  const board4 = [
+    ["X", "X", "0"],
+    [null, null, "0"],
+    ["X", null, "0"],
+  ];
+  const board5 = [
+    ["X", null, "X"],
+    ["0", "0", "0"],
+    ["X", null, null],
+  ];
+  const board6 = [
+    ["X", null, "0"],
+    [null, "0", "0"],
+    ["0", null, "X"],
+  ];
+  const board7 = [
+    ["0", null, "X"],
+    [null, "X", "0"],
+    ["0", null, "X"],
+  ];
+  test("it throws an error when the board is not passed as a parameter", () => {
+    expect(() => {
+      findWinner();
+    }).toThrow("board is required");
+  });
+  test("return X when X winner board is passed", () => {
+    expect(findWinner(board1)).toEqual("X");
+    expect(findWinner(board2)).toEqual("X");
+    expect(findWinner(board3)).toEqual("X");
+  });
+  test("return 0 when 0 winner board is passed", () => {
+    expect(findWinner(board4)).toEqual("0");
+    expect(findWinner(board5)).toEqual("0");
+    expect(findWinner(board6)).toEqual("0");
+  });
+  test("return null when a board is passed with no winner", () => {
+    expect(findWinner(board7)).toEqual(null);
+  });
+});
