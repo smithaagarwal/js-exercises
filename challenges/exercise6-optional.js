@@ -103,6 +103,21 @@ export const getScreentimeAlertList = (users, date) => {
  */
 export const hexToRGB = (hexStr) => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+  const regExpForHexColorCode = /^#[0-9A-F]{6}$/i;
+  if (!regExpForHexColorCode.test(hexStr))
+    throw new Error(
+      "the code passed should be of the format # followed by 6 hexadeimal digits"
+    );
+  const rgbCode = "rgb(";
+  return (
+    rgbCode +
+    parseInt(hexStr.substr(1, 2), 16) +
+    "," +
+    parseInt(hexStr.substr(3, 2), 16) +
+    "," +
+    parseInt(hexStr.substr(5, 2), 16) +
+    ")"
+  );
 };
 
 /**
