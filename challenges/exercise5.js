@@ -27,9 +27,9 @@ export const sumMultiples = (arr) => {
 export const isValidDNA = (str) => {
   if (str === undefined) throw new Error("str is required");
   if (str.length === 0) return false;
-  return Array.from(str).every((char) => {
-    return char === "C" || char === "T" || char === "G" || char === "A";
-  });
+  return Array.from(str).every(
+    (char) => char === "C" || char === "T" || char === "G" || char === "A"
+  );
 };
 
 /**
@@ -43,16 +43,12 @@ export const getComplementaryDNA = (str) => {
     switch (char) {
       case "A":
         return "T";
-        break;
       case "T":
         return "A";
-        break;
       case "C":
         return "G";
-        break;
       case "G":
         return "C";
-        break;
     }
   });
   return complementaryDNAArr.join("");
@@ -88,8 +84,7 @@ export const isItPrime = (n) => {
 export const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
-  const matrixArr = Array.from(Array(n), () => new Array(n).fill(fill));
-  return matrixArr;
+  return Array.from(Array(n), () => new Array(n).fill(fill));
 };
 
 /**
@@ -112,6 +107,5 @@ export const areWeCovered = (staff, day) => {
   staff.forEach((member) => {
     if (member.rota.includes(day)) noOfDays++;
   });
-  if (noOfDays >= 3) return true;
-  return false;
+  return (noOfDays >= 3) ;
 };
