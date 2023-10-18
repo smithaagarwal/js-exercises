@@ -1,6 +1,6 @@
 export function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
-  return nums.map((x) => Math.pow(x, 2));
+  return nums.map(x => Math.pow(x, 2));
 }
 
 export function camelCaseWords(words) {
@@ -19,7 +19,7 @@ export function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
   let numOfSubjects = 0;
   numOfSubjects = people.reduce(
-    (total, element) => total + element.subjects.length,
+    (total, person) => total + person.subjects.length,
     numOfSubjects
   );
   return numOfSubjects;
